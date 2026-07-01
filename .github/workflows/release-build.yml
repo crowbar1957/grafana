@@ -115,7 +115,7 @@ jobs:
       matrix:
         include:
           - target: linux-amd64
-    uses: ./.github/workflows/publish-artifact.yml@main
+    uses: ./publish-artifact.yml@main
     permissions:
       id-token: write
     needs:
