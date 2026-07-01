@@ -35,11 +35,6 @@ runs:
         name: ${{ inputs.frontend-artifact }}
         path: public
 
-    - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
-      with:
-        name: ${{ inputs.backend-artifact }}
-        path: bin/${{ inputs.os }}/${{ inputs.arch }}
-
     - name: Build tar.gz
       shell: bash
       env:
