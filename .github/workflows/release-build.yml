@@ -7,14 +7,6 @@ on:
         type: string
         required: false
         default: workflow_dispatch
-  schedule:
-    # Every weeknight at midnight
-    # "Scheduled workflows will only run on the default branch." (docs.github.com)
-    - cron: '0 0 * * 1-5'
-  push:
-    branches:
-      - release-*.*.*
-      - main
 
 permissions:
   contents: read
@@ -37,8 +29,7 @@ jobs:
     # grafana/grafana builds only main (push/schedule/dispatch); release-candidate builds
     # now run in the mirror.
     if: >-
-      (github.repository == 'grafana/grafana' && github.ref_name == 'main') ||
-      (github.repository == 'grafana/grafana-security-mirror' && endsWith(github.ref_name, '#patched'))
+      (github.ref_name == 'main') 
     outputs:
       version: ${{ steps.output.outputs.version }}
       grafana-commit: ${{ steps.output.outputs.grafana_commit }}
@@ -169,7 +160,6 @@ jobs:
           build-number: ${{ github.run_id }}
           build-version: ${{ needs.setup.outputs.version }}
           frontend-artifact: release-frontend
-          backend-artifact: release-backend-${{ matrix.name }}
       - name: Generate checksums
         run: |
           set -euo pipefail
