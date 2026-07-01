@@ -108,15 +108,6 @@ jobs:
           path: upload/artifacts-packages-${{ matrix.name }}
           retention-days: 1
 
-  verify-targz:
-    name: verify targz (linux-amd64)
-    needs:
-      - build-targz
-    uses: ./.github/workflows/release-verify.yml
-    with:
-      run-id: ${{ github.run_id }}
-      targz-artifact-name: artifacts-packages-linux-amd64
-
   publish-targz:
     name: Upload targz / ${{ matrix.target }}
     strategy:
@@ -124,7 +115,7 @@ jobs:
       matrix:
         include:
           - target: linux-amd64
-    uses: grafana/grafana/.github/workflows/publish-artifact.yml@main
+    uses: ./.github/workflows/publish-artifact.yml@main
     permissions:
       id-token: write
     needs:

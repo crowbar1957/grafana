@@ -36,7 +36,7 @@ on:
       runs-on:
         type: string
         required: false
-        default: github-hosted-ubuntu-x64-small
+        default: github-hosted-ubuntu-latest
 jobs:
   publish:
     runs-on: ${{ inputs.runs-on }}
