@@ -24,7 +24,7 @@ permissions:
 #
 
 env:
-  VERSION: "v13.1.0"
+  VERSION: v13.1.0
 
 jobs:
   build-frontend:
