@@ -1,15 +1,5 @@
-[dev]
-last 1 chrome versions
-last 1 firefox versions
-last 1 safari versions
-
 [production]
 last 2 Firefox versions
-last 2 Chrome versions
-last 2 Safari versions
-last 2 Edge versions
-last 1 ios_saf versions
-last 1 and_chr versions
-last 1 samsung versions
-
-
+Chrome >= 109
+Edge >= 109
+ios_saf >= 14.4
