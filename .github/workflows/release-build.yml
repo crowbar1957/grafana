@@ -133,6 +133,6 @@ jobs:
       bucket: grafana-prerelease
       pattern: artifacts-*packages-${{ matrix.target }}
       run-id: ${{ github.run_id }}
-      bucket-path: ${{ env.VERSION }}_${{ github.run_id }}
+      bucket-path: v13.1.0_${{ github.run_id }}
       environment: prod
       runs-on: ubuntu-x64-small
