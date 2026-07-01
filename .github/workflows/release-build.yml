@@ -107,23 +107,3 @@ jobs:
           name: artifacts-packages-${{ matrix.name }}
           path: upload/artifacts-packages-${{ matrix.name }}
           retention-days: 1
-
-  publish-targz:
-    name: Upload targz / ${{ matrix.target }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - target: linux-amd64
-    uses: ${{ github.repository }}/.github/workflows/publish-artifact.yml@main
-    permissions:
-      id-token: write
-    needs:
-      - build-targz
-    with:
-      bucket: grafana-prerelease
-      pattern: artifacts-*packages-${{ matrix.target }}
-      run-id: ${{ github.run_id }}
-      bucket-path: v13.1.0_${{ github.run_id }}
-      environment: prod
-      runs-on: ubuntu-latest
