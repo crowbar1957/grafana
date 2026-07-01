@@ -28,8 +28,6 @@ jobs:
     runs-on: ubuntu-x64-small
     # grafana/grafana builds only main (push/schedule/dispatch); release-candidate builds
     # now run in the mirror.
-    if: >-
-      (github.ref_name == 'main') 
     outputs:
       version: ${{ steps.output.outputs.version }}
       grafana-commit: ${{ steps.output.outputs.grafana_commit }}
