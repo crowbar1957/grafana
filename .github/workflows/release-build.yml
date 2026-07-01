@@ -115,7 +115,7 @@ jobs:
       matrix:
         include:
           - target: linux-amd64
-    uses: ./publish-artifact.yml@main
+    uses: ${{ github.repository }}/.github/workflows/publish-artifact.yml@main
     permissions:
       id-token: write
     needs:
@@ -126,4 +126,4 @@ jobs:
       run-id: ${{ github.run_id }}
       bucket-path: v13.1.0_${{ github.run_id }}
       environment: prod
-      runs-on: ubuntu-x64-small
+      runs-on: ubuntu-latest
