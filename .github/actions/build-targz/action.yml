@@ -40,14 +40,6 @@ runs:
         name: ${{ inputs.backend-artifact }}
         path: bin/${{ inputs.os }}/${{ inputs.arch }}
 
-    - name: Fix backend binary permissions
-      if: inputs.os != 'windows'
-      shell: bash
-      env:
-        TARGET_OS: ${{ inputs.os }}
-        TARGET_ARCH: ${{ inputs.arch }}
-      run: chmod +x bin/${TARGET_OS}/${TARGET_ARCH}/grafana*
-
     - name: Build tar.gz
       shell: bash
       env:
